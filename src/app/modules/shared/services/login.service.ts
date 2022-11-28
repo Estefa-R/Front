@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.get(environment.base_url + `/Login/login`,
+    return this.http.get(environment.base_url + `/authentication/login`,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
@@ -27,6 +27,6 @@ export class LoginService {
   }
 
   registerSuccessfulLogin(username: string, password: string) {
- 
+
   }
 }
