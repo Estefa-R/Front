@@ -1,6 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -25,7 +24,7 @@ export class SidenavComponent implements OnInit {
     {name: "Historial mercancia", route: "historial mercancia", icon: "work_history"}
   ]
 
-  constructor(media: MediaMatcher, private loginService: LoginService) {
+  constructor(media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
   }
   shouldRun = true;
@@ -35,15 +34,7 @@ export class SidenavComponent implements OnInit {
   }
 
   logout(){
-    this.loginService.login(this.username, this.password).subscribe((result) => {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Login Successful';
 
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-    });
   }
 
 }
